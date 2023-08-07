@@ -8,7 +8,7 @@ import Foundation
 	typealias Process = Task
 #endif
 
-
+#if os(OSX)
 enum ShellError: Error {
     /// Thrown when the command didn't error but data failed to unwrap.
     case failedToUnwrapOutput
@@ -68,3 +68,4 @@ public func bash(command: String, args: [String]) throws -> String {
     )
     return try shell(path: whichPathForCommand, args: args)
 }
+#endif
